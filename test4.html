@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Document</title>
+        <script src="F:/前端/vue-2.4.0/vue-2.4.0/dist/vue.js"></script>
+        <style>
+            .style1{
+                color:red;
+            }
+            .style2{
+                background-color: blue;
+            }
+            .style3{
+                font-style: italic;
+            }
+            .style4{
+                font-size:30px;
+            }
+            </style>
+    </head>
+    <body>
+        <div id="app">
+<p v-if="flag"><!--v-if为真时，创建条件元素，为假时，去除条件元素-->
+ hello
+ </p>
+ <p v-show="flag"><!--v-show为真时，显示条件元素，为假时，隐藏条件元素，适合开发时频繁切换，仅仅是增加了display：none-->
+     hello
+ </p>
+    </div>
+        <script>
+            //vm对象是mvvm中的vm,调度者
+            var vm = new Vue({
+                el:"#app",
+                data:{
+    //m，数据区 
+                      "num1":0,
+                      "num2":0,
+                      "sign":"+",
+                      flag:false,
+                      mystyle:{style1:true,style2:true,style3:true,style4:true},
+                      "result":0 ,
+                      city1:{id:"001",name:"beijing"},
+                     
+                
+                },
+                methods:{
+                    equal() {
+                        if(this.sign=="+"){
+                            this.result=parseInt(this.num1)+parseInt(this.num2);
+                        }else if(this.sign=="-"){
+                            this.result=parseInt(this.num1)-parseInt(this.num2);
+                        }else if(this.sign=="*"){
+                            this.result=parseInt(this.num1)*parseInt(this.num2);
+                        }else if(this.sign=="/"){
+                            this.result=parseInt(this.num1)/parseInt(this.num2);
+                        }
+                }
+                }
+            });
+        </script>
+        </body>
+    </html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Document</title>
+        <script src="F:/前端/vue-2.4.0/vue-2.4.0/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+           <input type="text" v-dt1="'blue'"/>
+        </div>
+
+        <script>
+            //vm对象是mvvm中的vm,调度者
+        Vue.directive("dt1",{
+            bind:function(el,bind){//每当指令绑定该元素时，立即执行一次，操作样式（css）
+                el.style.color=bind.value;
+            
+            },
+            inserted:function(el){//元素插入到dom中，会执行一次操作（js）
+                el.focus();
+            },
+            updated:function(el){//元素更新时触发，可以触发多次
+
+            }
+        })
+
+           
+            var vm = new Vue({
+                el:"#app",
+                data:{
+    //m，数据区       
+                      "num1":0,
+                      "num2":0,
+                      "sign":"aaa",
+                      "currentTime":new Date(),
+                },
+                methods:{
+                    
+            
+                }
+            });
+        </script>
+        </body>
+    </html>

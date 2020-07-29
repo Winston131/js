@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Document</title>
+        <script src="F:/前端/vue-2.4.0/vue-2.4.0/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <input type="text" v-model="num1"/>
+            <select v-model="sign">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+            <input type="text" v-model="num2"/>
+            <input type="button"  value="=" @click="equal" />
+            <input type="text" v-model="result"/>
+        </div>
+
+        <script>
+            //vm对象是mvvm中的vm,调度者
+            var vm = new Vue({
+                el:"#app",
+                data:{
+    //m，数据区
+                      "num1":0,
+                      "num2":0,
+                      "sign":"+",
+                      "result":0
+                },
+                methods:{
+                    equal() {
+                        if(this.sign=="+"){
+                            this.result=parseInt(this.num1)+parseInt(this.num2);
+                        }else if(this.sign=="-"){
+                            this.result=parseInt(this.num1)-parseInt(this.num2);
+                        }else if(this.sign=="*"){
+                            this.result=parseInt(this.num1)*parseInt(this.num2);
+                        }else if(this.sign=="/"){
+                            this.result=parseInt(this.num1)/parseInt(this.num2);
+                        }
+                }
+                }
+            });
+        </script>
+        </body>
+    </html>

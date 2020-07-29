@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Document</title>
+        <script src="F:/前端/vue-2.4.0/vue-2.4.0/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p>
+                {{sign | A | C | filter3}} 
+            
+            </p>
+            <p>
+                {{currentTime | B}}
+            </p>
+
+        </div>
+
+        <script>
+            //vm对象是mvvm中的vm,调度者
+            Vue.filter("B",function(dateTime){
+             var y=dateTime.getFullYear();
+             var m=(dateTime.getMonth()+"").toString().padStart(2,"0");
+             var d=(dateTime.getDate()+"").toString().padStart(2,"0");
+             var h=(dateTime.getHours()+"").toString().padStart(2,"0");
+             var mm=(dateTime.getMinutes()+"").toString().padStart(2,"0");
+             var s=(dateTime.getSeconds()+"").toString().padStart(2,"0");
+             //return y+"-"+m+"-"+d;
+             return `${y}-${m}-${d} ${h}-${mm}-${s}`;
+            })
+
+            Vue.filter("A",function(value){
+             value= value.toUpperCase();
+             return value;
+            })
+            Vue.filter("C",function(value){
+                return value+"123";
+            })
+            var vm = new Vue({
+                el:"#app",
+                data:{
+    //m，数据区
+                      "num1":0,
+                      "num2":0,
+                      "sign":"aaa",
+                      "currentTime":new Date(),
+
+                },
+            filters:{
+                filter3:function(value) {
+                    return value+"bbb";
+            }
+            }
+            });
+        </script>
+        </body>
+    </html>

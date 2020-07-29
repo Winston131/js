@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Document</title>
+        <script src="F:/前端/vue-2.4.0/vue-2.4.0/dist/vue.js"></script>
+    </head>
+    <body>
+        <!--v,视图区-->
+        <div id="app">
+            <a href="http://baidu.com" @click.prevent.once="fun1">点击</a>
+<!--             <div style="width:200px;height:200px;background-color:red" @click="fun1">
+               <div style="width:100px;height:200px;background-color:blue" @click.stop="fun2"><!--stop冒泡 self只是阻止自己-->
+                 <input type="button" value="dianji" @click="fun1"/>
+            </div>
+            </div> -->
+            <input type="text" :value="str1"/>
+            <p :title="str2">content..
+            </p>
+            <input type="button"  value="submit" onclick="alert(1)" title="str3+'hello'"/>
+            <input type="button"  value="点击" @click="fun1" /> -->
+        </div>
+
+
+    <script>
+        //vm对象是mvvm中的vm,调度者
+        var vm = new Vue({
+            el:"#app",
+            data:{
+//m，数据区
+                  "str1":"aaa",
+                  "str2":"noworld",
+                  "str3":"ccc"
+            },
+            methods:{
+                fun1() {
+                    alert("abc");
+                },
+                fun2(){
+                    alert("ccc");
+                }
+            }
+        });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Document</title>
+        <script src="F:/前端/vue-2.4.0/vue-2.4.0/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p v-for="f in fruitlist" :key="f.id">
+                {{f.name}}------{{f.price | A}}
+            
+            </p>
+
+
+        </div>
+
+        <script>
+            //vm对象是mvvm中的vm,调度者
+
+
+            Vue.filter("A",function(value){
+             return  value*0.1;
+            })
+            var vm = new Vue({
+                el:"#app",
+                data:{
+    //m，数据区       
+    fruitlist:[
+    {"id":"1","name":"apple","price":80},
+    {"id":"2","name":"pear","price":90},
+    {"id":"3","name":"orange","price":100}
+    ],
+                      "num1":0,
+                      "num2":0,
+                      "sign":"aaa",
+                      "currentTime":new Date(),
+                },
+                methods:{
+                    
+            
+                }
+            });
+        </script>
+        </body>
+    </html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Document</title>
+        <script src="F:/前端/vue-2.4.0/vue-2.4.0/dist/vue.js"></script>
+        <style>
+            .style1{
+                color:red
+            }
+            .aign1{
+                text-align:center
+            }
+            td{
+                text-align: center
+            }
+        </style>
+    </head>
+    <body>
+        <!--v,视图区-->
+        <div id="app">
+            <h1 :class="hstyle">学生管理系统</h1>
+            <hr width="100%">
+            <br>
+            id:<input type="text" v-model="id"/>&nbsp;&nbsp;
+            name:<input type="text" v-model="name"/>&nbsp;&nbsp;
+            age:<input type="text" v-model="age"/>&nbsp;&nbsp;
+            gender:<input type="text" v-model="gender"/>&nbsp;&nbsp;
+            <input type="button" value="save" @click="save"/>&nbsp;&nbsp;
+            <input type="text" v-model="sname" @keyup="search"/>&nbsp;&nbsp;
+            <input type="button" value="search" @click="search"/>
+            <br/>
+            <br/>
+            <table border="1" width="100%" align="center" cellpadding="6px" cellspacing="0px">
+                <tr>
+                    <td>num</td>
+                    <td>id</td>
+                    <td>name</td>
+                    <td>age</td>
+                    <td>gender</td>
+                    <td>do</td>
+                    </tr>
+                    <tr v-for="(s,i) in slist" :key="s.id">
+                        <td>{{i+1}}</td>
+                        <td>{{s.id}}</td>
+                        <td>{{s.name}}</td>
+                        <td>{{s.age}}</td>
+                        <td>{{s.gender}}</td>
+                        <td>
+                            <a href="javascript:void(0)" @click="delte(s.id)">删除</a>
+                        </td>
+                    </tr>
+                </table>
+        </div>
+
+
+    <script>
+        //vm对象是mvvm中的vm,调度者
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                slist:[
+                    {
+                        id:"01",name:"wz",age:"24",gender:"male"
+                    },
+                    {
+                        id:"02",name:"wa",age:"28",gender:"female"
+                    },
+                    {
+                        id:"03",name:"wb",age:"21",gender:"male"
+                    }
+                ],
+                searchlist:[
+                    {
+                        id:"01",name:"wz",age:"24",gender:"male"
+                    },
+                    {
+                        id:"02",name:"wa",age:"28",gender:"female"
+                    },
+                    {
+                        id:"03",name:"wb",age:"21",gender:"male"
+                    }
+                ],
+//m，数据区
+                  "id":"",
+                  "name":"",
+                  "age":"",
+                  "gender":"",
+                  "sname":"",
+                  hstyle:{style1:true,aign1:true}
+                  
+            },
+            methods:{
+                save() {
+                    var s={id:this.id,name:this.name,age:this.age,gender:this.gender};
+                    this.slist.push(s);
+                    alert("good");
+                },
+                delte(id){
+                    for(var i=0;i<this.slist.length;i++){
+                        if(this.slist[i].id==id){
+                             this.slist.splice(i,1);
+                        }
+                    }
+                    
+                    alert("ok");
+                },
+                search(){
+                    this.slist=[];
+                    for(var i=0;i<this.searchlist.length;i++){
+                        if(this.searchlist[i].name.indexOf(this.sname)>=0){
+                            this.slist.push(this.searchlist[i]);
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    </body>
+</html>
